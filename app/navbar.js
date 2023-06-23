@@ -16,7 +16,10 @@ export default function Navbar() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href="http://localhost:3000/valuebets">Value Bets</Link>
+          <Link href="/valuebets">Value Bets</Link>
+        </li>
+        <li>
+          <Link href="/nbavalue">NBA Player Props</Link>
         </li>
         <li>
           <Link href="/settings">Settings</Link>

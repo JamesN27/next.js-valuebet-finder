@@ -6,20 +6,21 @@ import style from './navbar.module.css';
 export default function Navbar() {
   return (
     <nav>
-      <Link href="http://localhost:3000">
-        <div className={style.logoContainer}>
+      <div className={style.logoContainer}>
+        <Link href="http://localhost:3000">
           <Image src={vwlogo} alt="Logo" width={250} height={250} />
-        </div>
-      </Link>
+        </Link>
+      </div>
+
       <ul>
         <li>
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href="/valuebets">Value Bets</Link>
+          <Link href="http://localhost:3000/valuebets">Value Bets</Link>
         </li>
         <li>
-          <Link href="/nbavalue">NBA Player Props</Link>
+          <Link href="/nbavalue">NBA Player Prop Bets</Link>
         </li>
         <li>
           <Link href="/settings">Settings</Link>

@@ -2,7 +2,7 @@
   --primary-green: #008000; /* Dark green */
   --secondary-green: #00b300; /* Medium green */
   --tertiary-green: #00e600; /* Light green */
-  min-height: 100vh;
+  height: 100vh;
 }
 
 body {

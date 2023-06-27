@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className={style.logoContainer}>
-        <Link href="http://localhost:3000">
+        <Link href="/">
           <Image src={vwlogo} alt="Logo" width={250} height={250} />
         </Link>
       </div>

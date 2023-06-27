@@ -11,7 +11,7 @@ export default function Home() {
         <p>This is the main content of the homepage.</p>
       </div>
       <footer className={styles.footer}>
-        <p>Data powered by</p>
+        <p>Data powered by Oddspedia</p>
         <Link href="https://oddspedia.com/">
           <Image src={oddspedia} alt="Logo" width={250} height={50} />
         </Link>

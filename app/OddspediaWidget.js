@@ -9,7 +9,7 @@ export default function OddspediaWidget() {
       window.oddspediaWidgetOddsComparisonPopularSportsLeagues = {
         api_token: "1802fa7b754c1a082862aa19948c30499bcd952be46462a15b5874b481e3",
         type: "odds-comparison",
-        domain: "https://next-js-valuebet-finder-w5y9.vercel.app/",
+        domain: "https://next-js-valuebet-finder.vercel.app/",
         selector: "oddspedia-widget-container",
         width: "1200",
         theme: "1",

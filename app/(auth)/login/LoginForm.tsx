@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
 import styles from './LoginForm.module.css';
@@ -8,6 +9,7 @@ export default function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
   async function login() {
     const response = await fetch('/api/login', {
@@ -24,6 +26,8 @@ export default function LoginForm() {
 
     if ('user' in data) {
       console.log(data.user);
+      router.push(`/profile/${data.user.username}`);
+      router.refresh();
     }
   }
 

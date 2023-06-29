@@ -13,3 +13,7 @@ body {
     var(--tertiary-green)
   );
 }
+
+* {
+  color: aqua;
+}

@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
-  createUser,
   getUserWithPasswordHashByUsername,
   User,
 } from '../../../../database/users';

@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
@@ -24,9 +25,10 @@ export async function POST(
 ): Promise<NextResponse<RegisterResponseBodyPost>> {
   const body = await request.json();
 
-  console.log(body);
+  // 1. get the credentials from the body
   const result = userSchema.safeParse(body);
 
+  // 2. verify the user data and check that the name is not taken
   if (!result.success) {
     return NextResponse.json(
       { error: 'username or password missing' },
@@ -43,7 +45,20 @@ export async function POST(
     );
   }
 
-  console.log(await createUser(result.data.username, result.data.password));
+  // 3. hash the password
+  const passwordHash = await bcrypt.hash(result.data.password, 10);
 
-  return NextResponse.json({ user: { id: 1, username: 'jose' } });
+  // 4. store the credentials in the db
+  const newUser = await createUser(result.data.username, passwordHash);
+
+  if (!newUser) {
+    // zod send you details about the error
+    // console.log(result.error);
+    return NextResponse.json(
+      { error: 'Error creating the new user' },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ user: newUser });
 }

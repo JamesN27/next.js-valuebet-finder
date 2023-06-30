@@ -25,6 +25,12 @@ export default function Navbar() {
         <li>
           <Link href="/settings">Settings</Link>
         </li>
+        <li>
+          <Link href="/register">register</Link>
+        </li>
+        <li>
+          <Link href="/login">login</Link>
+        </li>
       </ul>
     </nav>
   );

@@ -60,6 +60,12 @@ export async function POST(
     );
   }
 
+  // We are sure the user is authenticated
+
+  // 4. Create a token
+  // 5. Create the session record
+  // 6. Send the new cookie in the headers
+
   return NextResponse.json({
     user: {
       username: userWithPasswordHash.username,

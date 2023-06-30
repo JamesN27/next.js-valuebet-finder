@@ -1,11 +1,15 @@
+import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { createSession } from '../../../../database/sessions';
 import {
   createUser,
   getUserByUsername,
   User,
 } from '../../../../database/users';
+import { secureCookieOptions } from '../../../../util/cookies';
 
 type Error = { error: string };
 
@@ -36,8 +40,6 @@ export async function POST(
     );
   }
 
-  console.log('query', await getUserByUsername(result.data.username));
-
   if (await getUserByUsername(result.data.username)) {
     return NextResponse.json(
       { error: 'username is already used' },
@@ -60,5 +62,30 @@ export async function POST(
     );
   }
 
+  // We are sure the user is authenticated
+
+  // 5. Create a token
+
+  const token = crypto.randomBytes(100).toString('base64');
+  // 6. Create the session record
+
+  const session = await createSession(token, newUser.id);
+
+  if (!session) {
+    return NextResponse.json(
+      { error: 'error creating the new session' },
+      { status: 500 },
+    );
+  }
+
+  // 7. Send the new cookie in the headers
+
+  cookies().set({
+    name: 'sessionToken',
+    value: session.token,
+    ...secureCookieOptions,
+  });
+
+  // 7. return the new user to the client
   return NextResponse.json({ user: newUser });
 }

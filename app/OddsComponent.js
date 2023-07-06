@@ -6,9 +6,19 @@ import React, { useState } from 'react';
 const OddsComponent = () => {
   const [odds, setOdds] = useState(null);
   const [threshold, setThreshold] = useState('');
+  const [minOdds, setMinOdds] = useState('');
+  const [maxOdds, setMaxOdds] = useState('');
 
   const handleThresholdChange = (e) => {
     setThreshold(e.target.value);
+  };
+
+  const handleMinOddsChange = (e) => {
+    setMinOdds(e.target.value);
+  };
+
+  const handleMaxOddsChange = (e) => {
+    setMaxOdds(e.target.value);
   };
 
   const handleButtonClick = async () => {
@@ -28,51 +38,39 @@ const OddsComponent = () => {
 
       const data = response.data;
 
-      // Extract the higher odds from other bookmakers compared to Pinnacle odds
+      // Extract the odds within the specified range and above the threshold
       const extractedOdds = data.flatMap((event) => {
-        const pinnacleBookmaker = event.bookmakers.find(
+        const pinnacleOdds = event.bookmakers.find(
           (bookmaker) => bookmaker.key === 'pinnacle',
-        );
+        )?.markets[0]?.outcomes;
 
-        if (
-          !pinnacleBookmaker ||
-          !pinnacleBookmaker.markets ||
-          !pinnacleBookmaker.markets[0]?.outcomes
-        ) {
-          // Skip the event if pinnacleBookmaker or necessary properties are undefined
-          return [];
-        }
-
-        const pinnacleOutcomesMap =
-          pinnacleBookmaker.markets[0].outcomes.reduce((map, outcome) => {
-            map[outcome.name] = outcome.price;
-            return map;
-          }, {});
-
-        const higherOdds = event.bookmakers
-          .filter((bookmaker) => bookmaker.key !== 'pinnacle')
-          .flatMap((bookmaker) => {
-            if (!bookmaker.markets || !bookmaker.markets[0]?.outcomes) {
-              // Skip the bookmaker if necessary properties are undefined
-              return [];
-            }
-
-            return bookmaker.markets[0].outcomes
-              .filter((outcome) => {
-                const pinnaclePrice = pinnacleOutcomesMap[outcome.name];
-                const priceDifference = outcome.price - pinnaclePrice;
-                return priceDifference > Number(threshold);
-              })
+        const oddsInRange = event.bookmakers
+          .filter(
+            (bookmaker) => bookmaker.markets && bookmaker.markets[0]?.outcomes,
+          )
+          .flatMap((bookmaker) =>
+            bookmaker.markets[0].outcomes
+              .filter(
+                (outcome) =>
+                  outcome.price >= Number(minOdds) &&
+                  outcome.price <= Number(maxOdds) &&
+                  outcome.price -
+                    (pinnacleOdds?.find((po) => po.name === outcome.name)
+                      ?.price || 0) >
+                    Number(threshold),
+              )
               .map((outcome) => ({
                 event: `${event.home_team} vs ${event.away_team}`,
                 bookmaker: bookmaker.title,
                 outcome: outcome.name,
                 price: outcome.price,
-                pinnaclePrice: pinnacleOutcomesMap[outcome.name], // Include the Pinnacle odds
-              }));
-          });
+                pinnaclePrice:
+                  pinnacleOdds?.find((po) => po.name === outcome.name)?.price ||
+                  '',
+              })),
+          );
 
-        return higherOdds;
+        return oddsInRange;
       });
 
       // Set the extracted odds in the state
@@ -93,6 +91,24 @@ const OddsComponent = () => {
           id="threshold"
           value={threshold}
           onChange={handleThresholdChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="minOdds">Minimum Odds: </label>
+        <input
+          type="number"
+          id="minOdds"
+          value={minOdds}
+          onChange={handleMinOddsChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="maxOdds">Maximum Odds: </label>
+        <input
+          type="number"
+          id="maxOdds"
+          value={maxOdds}
+          onChange={handleMaxOddsChange}
         />
       </div>
       <button onClick={handleButtonClick}>Get Odds</button>

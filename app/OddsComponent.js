@@ -38,7 +38,11 @@ const OddsComponent = () => {
           return [];
         }
 
-        const pinnacleOutcome = pinnacleBookmaker.markets[0].outcomes[0];
+        const pinnacleOutcomesMap =
+          pinnacleBookmaker.markets[0].outcomes.reduce((map, outcome) => {
+            map[outcome.name] = outcome.price;
+            return map;
+          }, {});
 
         const higherOdds = event.bookmakers
           .filter((bookmaker) => bookmaker.key !== 'pinnacle')
@@ -49,12 +53,17 @@ const OddsComponent = () => {
             }
 
             return bookmaker.markets[0].outcomes
-              .filter((outcome) => outcome.price > pinnacleOutcome.price)
+              .filter(
+                (outcome) =>
+                  outcome.name in pinnacleOutcomesMap &&
+                  outcome.price > pinnacleOutcomesMap[outcome.name],
+              )
               .map((outcome) => ({
                 event: `${event.home_team} vs ${event.away_team}`,
                 bookmaker: bookmaker.title,
                 outcome: outcome.name,
                 price: outcome.price,
+                pinnaclePrice: pinnacleOutcomesMap[outcome.name], // Include the Pinnacle odds
               }));
           });
 
@@ -76,7 +85,8 @@ const OddsComponent = () => {
           {odds.map((odd, index) => (
             <li key={odd.id}>
               Event: {odd.event}, Bookmaker: {odd.bookmaker}, Outcome:{' '}
-              {odd.outcome}, Price: {odd.price}
+              {odd.outcome}, Price: {odd.price}, Pinnacle Price:{' '}
+              {odd.pinnaclePrice}
             </li>
           ))}
         </ul>

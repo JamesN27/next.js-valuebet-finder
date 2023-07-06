@@ -11,6 +11,7 @@
     "migrate": "dotenv -- ley --require tsm"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "dotenv-cli": "^7.2.1",
     "dotenv-safe": "^8.2.0",

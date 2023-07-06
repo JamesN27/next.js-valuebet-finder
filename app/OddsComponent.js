@@ -5,6 +5,11 @@ import React, { useState } from 'react';
 
 const OddsComponent = () => {
   const [odds, setOdds] = useState(null);
+  const [threshold, setThreshold] = useState('');
+
+  const handleThresholdChange = (e) => {
+    setThreshold(e.target.value);
+  };
 
   const handleButtonClick = async () => {
     try {
@@ -53,11 +58,11 @@ const OddsComponent = () => {
             }
 
             return bookmaker.markets[0].outcomes
-              .filter(
-                (outcome) =>
-                  outcome.name in pinnacleOutcomesMap &&
-                  outcome.price > pinnacleOutcomesMap[outcome.name],
-              )
+              .filter((outcome) => {
+                const pinnaclePrice = pinnacleOutcomesMap[outcome.name];
+                const priceDifference = outcome.price - pinnaclePrice;
+                return priceDifference > Number(threshold);
+              })
               .map((outcome) => ({
                 event: `${event.home_team} vs ${event.away_team}`,
                 bookmaker: bookmaker.title,
@@ -79,6 +84,17 @@ const OddsComponent = () => {
 
   return (
     <div>
+      <div>
+        <label htmlFor="threshold">
+          Minimum Difference from Pinnacle (e.g., 0.15):{' '}
+        </label>
+        <input
+          type="number"
+          id="threshold"
+          value={threshold}
+          onChange={handleThresholdChange}
+        />
+      </div>
       <button onClick={handleButtonClick}>Get Odds</button>
       {odds && (
         <ul>

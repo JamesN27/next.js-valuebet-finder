@@ -8,6 +8,20 @@ const OddsComponent = () => {
   const [threshold, setThreshold] = useState('');
   const [minOdds, setMinOdds] = useState('');
   const [maxOdds, setMaxOdds] = useState('');
+  const [selectedBookmakers, setSelectedBookmakers] = useState([]);
+
+  const bookmakers = [
+    { key: 'pinnacle', title: 'Pinnacle' },
+    { key: 'williamhill', title: 'William Hill' },
+    { key: 'betfair_ex_eu', title: 'Betfair' },
+    { key: 'betfair_sb_uk', title: 'Betfair Sportsbook UK' },
+    { key: 'betonlineag', title: 'BetOnline.ag' },
+    { key: 'sport888', title: '888sport' },
+    { key: 'mrgreen', title: 'Mr Green' },
+    { key: 'unibet_eu', title: 'Unibet' },
+    { key: 'matchbook', title: 'Matchbook' },
+    { key: 'onexbet', title: '1xBet' },
+  ];
 
   const handleThresholdChange = (e) => {
     setThreshold(e.target.value);
@@ -21,6 +35,14 @@ const OddsComponent = () => {
     setMaxOdds(e.target.value);
   };
 
+  const handleBookmakerChange = (e) => {
+    const selectedOptions = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value,
+    );
+    setSelectedBookmakers(selectedOptions);
+  };
+
   const handleButtonClick = async () => {
     try {
       // Make the API request to fetch the data
@@ -29,8 +51,7 @@ const OddsComponent = () => {
         {
           params: {
             apiKey: '2f42f78466de4f4fa0a9c6eff5ed85fa',
-            bookmakers:
-              'pinnacle,williamhill,betfair_ex_eu,betfair_sb_uk,betonlineag,sport888,mrgreen,unibet_eu,matchbook,onexbet',
+            bookmakers: selectedBookmakers.join(','),
             markets: 'h2h',
           },
         },
@@ -110,6 +131,21 @@ const OddsComponent = () => {
           value={maxOdds}
           onChange={handleMaxOddsChange}
         />
+      </div>
+      <div>
+        <label htmlFor="bookmakers">Bookmakers: </label>
+        <select
+          multiple
+          id="bookmakers"
+          value={selectedBookmakers}
+          onChange={handleBookmakerChange}
+        >
+          {bookmakers.map((bookmaker) => (
+            <option key={bookmaker.key} value={bookmaker.key}>
+              {bookmaker.title}
+            </option>
+          ))}
+        </select>
       </div>
       <button onClick={handleButtonClick}>Get Odds</button>
       {odds && (

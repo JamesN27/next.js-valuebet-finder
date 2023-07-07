@@ -82,6 +82,7 @@ const OddsComponent = () => {
               )
               .map((outcome) => ({
                 event: `${event.home_team} vs ${event.away_team}`,
+                commenceTime: event.commence_time,
                 bookmaker: bookmaker.title,
                 outcome: outcome.name,
                 price: outcome.price,
@@ -152,9 +153,9 @@ const OddsComponent = () => {
         <ul>
           {odds.map((odd, index) => (
             <li key={odd.id}>
-              Event: {odd.event}, Bookmaker: {odd.bookmaker}, Outcome:{' '}
-              {odd.outcome}, Price: {odd.price}, Pinnacle Price:{' '}
-              {odd.pinnaclePrice}
+              Event: {odd.event}, Commence Time: {odd.commenceTime}, Bookmaker:{' '}
+              {odd.bookmaker}, Outcome: {odd.outcome}, Price: {odd.price},
+              Pinnacle Price: {odd.pinnaclePrice}
             </li>
           ))}
         </ul>

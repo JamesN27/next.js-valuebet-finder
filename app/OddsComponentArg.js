@@ -66,6 +66,11 @@ const OddsComponentArg = () => {
           (bookmaker) => bookmaker.key === 'pinnacle',
         )?.markets[0]?.outcomes;
 
+        // Skip the event if Pinnacle has no odds
+        if (!pinnacleOdds) {
+          return [];
+        }
+
         const oddsInRange = event.bookmakers
           .filter(
             (bookmaker) => bookmaker.markets && bookmaker.markets[0]?.outcomes,

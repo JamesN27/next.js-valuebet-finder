@@ -4,7 +4,7 @@ import axios from 'axios';
 import { addHours, format } from 'date-fns';
 import React, { useState } from 'react';
 
-const OddsComponent = () => {
+const OddsComponentATP = () => {
   const [odds, setOdds] = useState(null);
   const [threshold, setThreshold] = useState('');
   const [minOdds, setMinOdds] = useState('');
@@ -81,7 +81,7 @@ const OddsComponent = () => {
                       ?.price || 0) >
                     Number(threshold),
               )
-              .map((outcome) => {
+              .map((outcome, index) => {
                 const adjustedCommenceTime = format(
                   addHours(new Date(event.commence_time), 0),
                   'yyyy-MM-dd HH:mm:ss',
@@ -89,6 +89,7 @@ const OddsComponent = () => {
 
                 return {
                   ...outcome,
+                  id: `${event.home_team}_${event.away_team}_${bookmaker.key}_${outcome.name}_${index}`,
                   event: `${event.home_team} vs ${event.away_team}`,
                   commenceTime: adjustedCommenceTime,
                   bookmaker: bookmaker.title,
@@ -155,13 +156,13 @@ const OddsComponent = () => {
           ))}
         </select>
       </div>
-      <button onClick={handleButtonClick}>Get Odds</button>
+      <button onClick={handleButtonClick}>Get ATP Odds</button>
       {odds && (
         <ul>
-          {odds.map((odd, index) => (
+          {odds.map((odd) => (
             <li key={odd.id}>
               Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
-              Bookmaker: {odd.bookmaker}, Outcome: {odd.outcome}, Price:{' '}
+              Bookmaker: {odd.bookmaker}, Outcome: {odd.name}, Price:{' '}
               {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
             </li>
           ))}
@@ -171,4 +172,4 @@ const OddsComponent = () => {
   );
 };
 
-export default OddsComponent;
+export default OddsComponentATP;

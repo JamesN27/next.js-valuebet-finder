@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import OddsComponentArg from '../OddsComponentArg';
 import OddsComponentATP from '../OddsComponentATP';
+import OddsComponentWTA from '../OddsComponentWTA';
 import Calculator from './calculator';
 
 export default function ValueBets() {
@@ -10,6 +11,7 @@ export default function ValueBets() {
       <div>
         <h1>Value Bets Page</h1>
         <OddsComponentATP />
+        <OddsComponentWTA />
         <OddsComponentArg />
         <Calculator />
       </div>

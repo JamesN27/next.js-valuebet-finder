@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import { addHours, format } from 'date-fns';
 import React, { useState } from 'react';
 
 const OddsComponent = () => {
@@ -80,16 +81,22 @@ const OddsComponent = () => {
                       ?.price || 0) >
                     Number(threshold),
               )
-              .map((outcome) => ({
-                event: `${event.home_team} vs ${event.away_team}`,
-                commenceTime: event.commence_time,
-                bookmaker: bookmaker.title,
-                outcome: outcome.name,
-                price: outcome.price,
-                pinnaclePrice:
-                  pinnacleOdds?.find((po) => po.name === outcome.name)?.price ||
-                  '',
-              })),
+              .map((outcome) => {
+                const adjustedCommenceTime = format(
+                  addHours(new Date(event.commence_time), 0),
+                  'yyyy-MM-dd HH:mm:ss',
+                );
+
+                return {
+                  ...outcome,
+                  event: `${event.home_team} vs ${event.away_team}`,
+                  commenceTime: adjustedCommenceTime,
+                  bookmaker: bookmaker.title,
+                  pinnaclePrice:
+                    pinnacleOdds?.find((po) => po.name === outcome.name)
+                      ?.price || '',
+                };
+              }),
           );
 
         return oddsInRange;
@@ -153,9 +160,9 @@ const OddsComponent = () => {
         <ul>
           {odds.map((odd, index) => (
             <li key={odd.id}>
-              Event: {odd.event}, Commence Time: {odd.commenceTime}, Bookmaker:{' '}
-              {odd.bookmaker}, Outcome: {odd.outcome}, Price: {odd.price},
-              Pinnacle Price: {odd.pinnaclePrice}
+              Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
+              Bookmaker: {odd.bookmaker}, Outcome: {odd.outcome}, Price:{' '}
+              {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
             </li>
           ))}
         </ul>

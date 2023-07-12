@@ -25,10 +25,14 @@ export default function Navbar() {
       </ul>
       <ul className={`${style.navLinks} ${style.registerLogin}`}>
         <li>
-          <Link href="/register">Register</Link>
+          <Link className={style.register} href="/register">
+            Register
+          </Link>
         </li>
         <li>
-          <Link href="/login">Login</Link>
+          <Link className={style.login} href="/login">
+            Login
+          </Link>
         </li>
       </ul>
     </nav>

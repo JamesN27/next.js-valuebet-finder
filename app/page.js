@@ -7,10 +7,7 @@ import styles from './page.module.css';
 export default function Home() {
   return (
     <div className={styles.body}>
-      <div className={styles.main}>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is the main content of the homepage.</p>
-      </div>
+      <div className={styles.main}></div>
 
       <div id="oddspedia-widget-container"></div>
 
@@ -19,7 +16,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <p>Data powered by Oddspedia</p>
         <Link href="https://oddspedia.com/">
-          <Image src={oddspedia} alt="Logo" width={250} height={50} />
+          <Image src={oddspedia} alt="Logo" width={125} height={25} />
         </Link>
       </footer>
     </div>

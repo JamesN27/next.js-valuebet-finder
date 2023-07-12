@@ -1,0 +1,31 @@
+.navbar {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  height: 100px;
+  padding: 10px;
+  z-index: 9999;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: transparent;
+}
+
+.logoContainer {
+  margin-top: 150px;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin-left: 80px;
+  gap: 4rem;
+}
+
+.navLinks li a {
+  text-decoration: none; /* Remove underline */
+}
+
+.registerLogin {
+  margin-left: auto;
+}

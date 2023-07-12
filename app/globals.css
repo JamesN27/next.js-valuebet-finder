@@ -2,7 +2,6 @@
   --primary-green: #008000; /* Dark green */
   --secondary-green: #00b300; /* Medium green */
   --tertiary-green: #d4b00f; /* Light green */
-  height: 100vh;
 }
 
 body {
@@ -15,5 +14,5 @@ body {
 }
 
 * {
-  color: rgb(255, 38, 38);
+  color: rgb(204, 6, 138);
 }

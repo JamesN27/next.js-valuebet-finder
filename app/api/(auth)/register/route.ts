@@ -35,14 +35,14 @@ export async function POST(
   // 2. verify the user data and check that the name is not taken
   if (!result.success) {
     return NextResponse.json(
-      { error: 'username or password missing' },
+      { error: 'Username or Password missing' },
       { status: 400 },
     );
   }
 
   if (await getUserByUsername(result.data.username)) {
     return NextResponse.json(
-      { error: 'username is already used' },
+      { error: 'Username is already used' },
       { status: 406 },
     );
   }
@@ -73,7 +73,7 @@ export async function POST(
 
   if (!session) {
     return NextResponse.json(
-      { error: 'error creating the new session' },
+      { error: 'Error creating the new session' },
       { status: 500 },
     );
   }

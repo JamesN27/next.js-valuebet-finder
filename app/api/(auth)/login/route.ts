@@ -34,7 +34,7 @@ export async function POST(
   // 2. verify the user data and check that the name is not taken
   if (!result.success) {
     return NextResponse.json(
-      { error: 'username or password missing' },
+      { error: 'Username or Password missing' },
       { status: 400 },
     );
   }
@@ -46,7 +46,7 @@ export async function POST(
 
   if (!userWithPasswordHash) {
     return NextResponse.json(
-      { error: 'user or password not valid' },
+      { error: 'User or Password not valid' },
       { status: 401 },
     );
   }
@@ -59,7 +59,7 @@ export async function POST(
 
   if (!isPasswordValid) {
     return NextResponse.json(
-      { error: 'user or password not valid' },
+      { error: 'User or Password not valid' },
       { status: 401 },
     );
   }
@@ -75,7 +75,7 @@ export async function POST(
 
   if (!session) {
     return NextResponse.json(
-      { error: 'error creating the new session' },
+      { error: 'Error creating the new session' },
       { status: 500 },
     );
   }

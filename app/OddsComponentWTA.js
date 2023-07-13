@@ -166,7 +166,7 @@ const OddsComponentWTA = () => {
           id="bookmakers"
           value={selectedBookmakers}
           onChange={handleBookmakerChange}
-          className={styles.input}
+          className={`${styles.input} ${styles.bookmakers}`}
         >
           {bookmakers.map((bookmaker) => (
             <option key={bookmaker.key} value={bookmaker.key}>

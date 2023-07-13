@@ -4,15 +4,17 @@ import OddsComponentArg from '../OddsComponentArg';
 import OddsComponentATP from '../OddsComponentATP';
 import OddsComponentWTA from '../OddsComponentWTA';
 import Calculator from './calculator';
+import styles from './page.module.css';
 
 export default function ValueBets() {
   return (
     <div>
       <div>
-        <h1>Value Bets Page</h1>
-        <OddsComponentATP />
-        <OddsComponentWTA />
-        <OddsComponentArg />
+        <div className={styles.container}>
+          <OddsComponentATP />
+          <OddsComponentWTA />
+          <OddsComponentArg />
+        </div>
         <Calculator />
       </div>
 

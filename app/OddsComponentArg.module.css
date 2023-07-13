@@ -12,6 +12,7 @@
 
 .inputField {
   margin-bottom: 10px;
+  color: #333;
 }
 
 .label {
@@ -51,4 +52,8 @@
 
 .button:active {
   background-color: #39843e;
+}
+
+.bookmakers option {
+  color: #333;
 }

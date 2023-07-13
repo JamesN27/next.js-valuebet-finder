@@ -1,0 +1,7 @@
+/* ValueBets.module.css */
+
+.container {
+  display: flex; /* Display the components in a row */
+  justify-content: space-evenly; /* Distribute the components evenly horizontally */
+  align-items: center; /* Align the components vertically in the center */
+}

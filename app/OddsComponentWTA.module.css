@@ -52,3 +52,7 @@
 .button:active {
   background-color: #39843e;
 }
+
+.bookmakers option {
+  color: #333;
+}

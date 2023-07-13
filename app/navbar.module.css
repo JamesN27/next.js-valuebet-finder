@@ -39,3 +39,11 @@
   padding-left: 30px;
   padding-right: 10px;
 }
+
+.logoutButton {
+  background-color: red;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}

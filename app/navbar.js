@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import vwlogo from '../public/images/vwlogo.png';
+import { LogoutButton } from './LogoutButton';
 import style from './navbar.module.css';
 
 export default function Navbar() {
@@ -33,6 +34,10 @@ export default function Navbar() {
           <Link className={style.login} href="/login">
             Login
           </Link>
+        </li>
+        <li>
+          {' '}
+          <LogoutButton className={style.logoutButton} />{' '}
         </li>
       </ul>
     </nav>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import styles from './calculator.module.css';
 
 const Calculator = () => {
   const [odds1, setOdds1] = useState('');
@@ -46,35 +47,65 @@ const Calculator = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div>
-        <label htmlFor="odds1">My Odds:</label>
+        <label className={styles.label} htmlFor="odds1">
+          My Odds:
+        </label>
         <input
+          className={styles.input}
           id="odds1"
           value={odds1}
           onChange={(e) => setOdds1(e.target.value)}
           onKeyPress={handleKeyPress}
         />
-        <label htmlFor="probability1">Probability:</label>
-        <input id="probability1" value={probability1} readOnly />
+        <label className={styles.label} htmlFor="probability1">
+          Probability:
+        </label>
+        <input
+          className={styles.input}
+          id="probability1"
+          value={probability1}
+          readOnly
+        />
       </div>
       <div>
-        <label htmlFor="odds2">Closing Line Odds:</label>
+        <label className={styles.label} htmlFor="odds2">
+          Closing Line Odds:
+        </label>
         <input
+          className={styles.input}
           id="odds2"
           value={odds2}
           onChange={(e) => setOdds2(e.target.value)}
           onKeyPress={handleKeyPress}
         />
-        <label htmlFor="probability2">Probability:</label>
-        <input id="probability2" value={probability2} readOnly />
+        <label className={styles.label} htmlFor="probability2">
+          Probability:
+        </label>
+        <input
+          className={styles.input}
+          id="probability2"
+          value={probability2}
+          readOnly
+        />
       </div>
-      <button onClick={calculateProbabilitiesAndValue}>
+      <button
+        className={styles.button}
+        onClick={calculateProbabilitiesAndValue}
+      >
         Calculate Probabilities and Value
       </button>
       <div>
-        <label htmlFor="valueBetweenOdds">Value:</label>
-        <input id="valueBetweenOdds" value={valueBetweenOdds} readOnly />
+        <label className={styles.label} htmlFor="valueBetweenOdds">
+          Value:
+        </label>
+        <input
+          className={styles.input}
+          id="valueBetweenOdds"
+          value={valueBetweenOdds}
+          readOnly
+        />
       </div>
     </div>
   );

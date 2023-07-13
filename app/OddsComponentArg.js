@@ -118,79 +118,85 @@ const OddsComponentArg = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.inputField}>
-        <label htmlFor="threshold" className={styles.label}>
-          Minimum Difference from Pinnacle (e.g., 0.15):
-        </label>
-        <input
-          type="number"
-          id="threshold"
-          value={threshold}
-          onChange={handleThresholdChange}
-          className={styles.input}
-        />
-      </div>
+    <div>
+      <div className={styles.container}>
+        <div className={styles.inputSection}>
+          <div className={styles.inputField}>
+            <label htmlFor="threshold" className={styles.label}>
+              Minimum Difference from Pinnacle (e.g., 0.15):
+            </label>
+            <input
+              type="number"
+              id="threshold"
+              value={threshold}
+              onChange={handleThresholdChange}
+              className={styles.input}
+            />
+          </div>
 
-      <div className={styles.inputField}>
-        <label htmlFor="minOdds" className={styles.label}>
-          Minimum Odds:
-        </label>
-        <input
-          type="number"
-          id="minOdds"
-          value={minOdds}
-          onChange={handleMinOddsChange}
-          className={styles.input}
-        />
-      </div>
+          <div className={styles.inputField}>
+            <label htmlFor="minOdds" className={styles.label}>
+              Minimum Odds:
+            </label>
+            <input
+              type="number"
+              id="minOdds"
+              value={minOdds}
+              onChange={handleMinOddsChange}
+              className={styles.input}
+            />
+          </div>
 
-      <div className={styles.inputField}>
-        <label htmlFor="maxOdds" className={styles.label}>
-          Maximum Odds:
-        </label>
-        <input
-          type="number"
-          id="maxOdds"
-          value={maxOdds}
-          onChange={handleMaxOddsChange}
-          className={styles.input}
-        />
-      </div>
+          <div className={styles.inputField}>
+            <label htmlFor="maxOdds" className={styles.label}>
+              Maximum Odds:
+            </label>
+            <input
+              type="number"
+              id="maxOdds"
+              value={maxOdds}
+              onChange={handleMaxOddsChange}
+              className={styles.input}
+            />
+          </div>
 
-      <div className={styles.inputField}>
-        <label htmlFor="bookmakers" className={styles.label}>
-          Bookmakers:
-        </label>
-        <select
-          multiple
-          id="bookmakers"
-          value={selectedBookmakers}
-          onChange={handleBookmakerChange}
-          className={`${styles.input} ${styles.bookmakers}`}
-        >
-          {bookmakers.map((bookmaker) => (
-            <option key={bookmaker.key} value={bookmaker.key}>
-              {bookmaker.title}
-            </option>
-          ))}
-        </select>
-      </div>
+          <div className={styles.inputField}>
+            <label htmlFor="bookmakers" className={styles.label}>
+              Bookmakers:
+            </label>
+            <select
+              multiple
+              id="bookmakers"
+              value={selectedBookmakers}
+              onChange={handleBookmakerChange}
+              className={`${styles.input} ${styles.bookmakers}`}
+            >
+              {bookmakers.map((bookmaker) => (
+                <option key={bookmaker.key} value={bookmaker.key}>
+                  {bookmaker.title}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-      <button onClick={handleButtonClick} className={styles.button}>
-        Get Argentina Football Odds
-      </button>
+        <button onClick={handleButtonClick} className={styles.button}>
+          Get Argentina Football Odds
+        </button>
+      </div>
 
       {odds && (
-        <ul>
-          {odds.map((odd) => (
-            <li key={odd.id}>
-              Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
-              Bookmaker: {odd.bookmaker}, Outcome: {odd.outcome}, Price:{' '}
-              {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.outputSection}>
+          <ul>
+            {odds.map((odd) => (
+              <li key={odd.id}>
+                Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
+                Bookmaker: {odd.bookmaker}, Outcome: {odd.outcome}, Price:{' '}
+                {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

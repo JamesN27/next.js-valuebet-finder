@@ -54,25 +54,3 @@
 .button:active {
   background-color: #39843e;
 }
-
-.bookmakers option {
-  color: #333;
-}
-
-.outputSection {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #d12323;
-  border-radius: 8px;
-  color: #333;
-}
-
-.outputSection ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.outputSection li {
-  margin-bottom: 8px;
-}

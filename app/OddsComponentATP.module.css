@@ -1,13 +1,8 @@
-.error {
-  color: rgb(250, 46, 46);
-}
-
-.register {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto;
   margin-top: 200px;
   width: 300px;
   padding: 20px;
@@ -15,7 +10,17 @@
   border-radius: 8px;
 }
 
-.form__field {
+.inputField {
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.input {
   margin-bottom: 10px;
   padding: 8px;
   width: 100%;
@@ -26,7 +31,7 @@
   font-weight: 500;
 }
 
-.form__field:focus {
+.input:focus {
   outline: none;
   box-shadow: 0 0 4px #bfbfbf;
 }
@@ -46,10 +51,4 @@
 
 .button:active {
   background-color: #39843e;
-}
-
-.label {
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 4px;
 }

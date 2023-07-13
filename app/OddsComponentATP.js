@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { addHours, format } from 'date-fns';
 import React, { useState } from 'react';
+import styles from './OddsComponentATP.module.css';
 
 const OddsComponentATP = () => {
   const [odds, setOdds] = useState(null);
@@ -116,43 +117,56 @@ const OddsComponentATP = () => {
   };
 
   return (
-    <div>
-      <div>
-        <label htmlFor="threshold">
-          Minimum Difference from Pinnacle (e.g., 0.15):{' '}
+    <div className={styles.container}>
+      <div className={styles.inputField}>
+        <label htmlFor="threshold" className={styles.label}>
+          Minimum Difference from Pinnacle (e.g., 0.15):
         </label>
         <input
           type="number"
           id="threshold"
           value={threshold}
           onChange={handleThresholdChange}
+          className={styles.input}
         />
       </div>
-      <div>
-        <label htmlFor="minOdds">Minimum Odds: </label>
+
+      <div className={styles.inputField}>
+        <label htmlFor="minOdds" className={styles.label}>
+          Minimum Odds:
+        </label>
         <input
           type="number"
           id="minOdds"
           value={minOdds}
           onChange={handleMinOddsChange}
+          className={styles.input}
         />
       </div>
-      <div>
-        <label htmlFor="maxOdds">Maximum Odds: </label>
+
+      <div className={styles.inputField}>
+        <label htmlFor="maxOdds" className={styles.label}>
+          Maximum Odds:
+        </label>
         <input
           type="number"
           id="maxOdds"
           value={maxOdds}
           onChange={handleMaxOddsChange}
+          className={styles.input}
         />
       </div>
-      <div>
-        <label htmlFor="bookmakers">Bookmakers: </label>
+
+      <div className={styles.inputField}>
+        <label htmlFor="bookmakers" className={styles.label}>
+          Bookmakers:
+        </label>
         <select
           multiple
           id="bookmakers"
           value={selectedBookmakers}
           onChange={handleBookmakerChange}
+          className={styles.input}
         >
           {bookmakers.map((bookmaker) => (
             <option key={bookmaker.key} value={bookmaker.key}>
@@ -161,7 +175,12 @@ const OddsComponentATP = () => {
           ))}
         </select>
       </div>
-      <button onClick={handleButtonClick}>Get ATP Odds</button>
+
+      <button className={styles.button} onClick={handleButtonClick}>
+        Get ATP Odds
+      </button>
+
+      {/* Display the odds */}
       {odds && (
         <ul>
           {odds.map((odd) => (

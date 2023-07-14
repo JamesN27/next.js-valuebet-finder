@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 200px;
   width: 300px;
   padding: 20px;
@@ -12,6 +12,7 @@
 
 .inputField {
   margin-bottom: 10px;
+  color: #333;
 }
 
 .label {
@@ -37,6 +38,7 @@
 }
 
 .button {
+  margin-bottom: 10px;
   padding: 10px 20px;
   background-color: #5fc763;
   color: #fff;
@@ -55,4 +57,29 @@
 
 .bookmakers option {
   color: #333;
+}
+
+.outputSection {
+  position: absolute;
+  display: flex;
+  margin-top: 880px;
+  justify-content: center;
+  right: 0;
+  width: 100vw;
+  /* margin: 0 auto; */
+  border-radius: 8px;
+  padding: 20px;
+  color: #333;
+}
+
+.outputList {
+  background-color: #e95c0b;
+  width: 60vw;
+  border-radius: 10px;
+  padding: 10px;
+  list-style: none;
+}
+
+.outputSection li {
+  margin-bottom: 8px;
 }

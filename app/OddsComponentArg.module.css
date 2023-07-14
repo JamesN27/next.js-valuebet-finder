@@ -60,17 +60,23 @@
 }
 
 .outputSection {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #d12323;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  right: 0;
+  width: 100vw;
+  margin: 0 auto;
   border-radius: 8px;
+  padding: 20px;
   color: #333;
 }
 
-.outputSection ul {
+.outputList {
+  background-color: #e95c0b;
+  width: 60vw;
+  border-radius: 10px;
+  padding: 10px;
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .outputSection li {

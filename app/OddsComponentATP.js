@@ -180,17 +180,18 @@ const OddsComponentATP = () => {
         Get ATP Odds
       </button>
 
-      {/* Display the odds */}
       {odds && (
-        <ul>
-          {odds.map((odd) => (
-            <li key={odd.id}>
-              Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
-              Bookmaker: {odd.bookmaker}, Outcome: {odd.name}, Price:{' '}
-              {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.outputSection}>
+          <ul className={styles.outputList}>
+            {odds.map((odd) => (
+              <li key={odd.id}>
+                Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
+                Bookmaker: {odd.bookmaker}, Outcome: {odd.outcome}, Price:{' '}
+                {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

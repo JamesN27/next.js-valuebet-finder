@@ -5,3 +5,10 @@
   justify-content: space-evenly; /* Distribute the components evenly horizontally */
   align-items: center; /* Align the components vertically in the center */
 }
+
+.links {
+  padding-top: 100px;
+  padding-right: 75px;
+  line-height: 25px;
+  float: right;
+}

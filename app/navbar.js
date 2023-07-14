@@ -37,7 +37,7 @@ export default function Navbar() {
         </li>
         <li>
           {' '}
-          <LogoutButton className={style.logoutButton} />{' '}
+          <LogoutButton  />{' '}
         </li>
       </ul>
     </nav>

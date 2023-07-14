@@ -187,7 +187,7 @@ const OddsComponentArg = () => {
 
       {odds && (
         <div className={styles.outputSection}>
-          <ul>
+          <ul className={styles.outputList}>
             {odds.map((odd) => (
               <li key={odd.id}>
                 Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,

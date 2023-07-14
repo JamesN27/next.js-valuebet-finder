@@ -14,11 +14,11 @@ export default function ValueBets() {
           <OddsComponentATP />
           <OddsComponentWTA />
           <OddsComponentArg />
+          <Calculator />
         </div>
-        <Calculator />
       </div>
 
-      <div>
+      <div className={styles.links}>
         <ul>
           <li>
             <Link href="https://www.pinnacle.com/de/">Pinnacle</Link>

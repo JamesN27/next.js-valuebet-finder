@@ -9,9 +9,9 @@ export default function Home() {
     <div className={styles.body}>
       <div className={styles.main}></div>
 
-      <div id="oddspedia-widget-container"></div>
-
-      <OddspediaWidget />
+      <div id="oddspedia-widget-container" className={styles.widgetContainer}>
+        <OddspediaWidget />
+      </div>
 
       <footer className={styles.footer}>
         <p>Data powered by Oddspedia</p>

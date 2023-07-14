@@ -15,7 +15,7 @@ export default function OddspediaWidget() {
         theme: "1",
         odds_type: "1",
         language: "en",
-        primary_color: "#06A514",
+        primary_color: "#5fc763;",
         accent_color: "#06A514",
         font: "Montserrat",
         logos: "true",

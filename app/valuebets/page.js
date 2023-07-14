@@ -25,38 +25,60 @@ export default function ValueBets() {
       <div className={styles.links}>
         <ul>
           <li>
-            <Link href="https://www.pinnacle.com/de/">Pinnacle</Link>
+            <Link href="https://www.pinnacle.com/de/" className={styles.link}>
+              Pinnacle
+            </Link>
           </li>
           <li>
-            <Link href="https://williamhill.com/de">William Hill</Link>
+            <Link href="https://williamhill.com/de" className={styles.link}>
+              William Hill
+            </Link>
           </li>
           <li>
-            <Link href="https://www.betfair.com/exchange/plus/">
+            <Link
+              href="https://www.betfair.com/exchange/plus/"
+              className={styles.link}
+            >
               Betfair Exchange
             </Link>
           </li>
           <li>
-            <Link href="https://www.betfair.com/sport/">
+            <Link href="https://www.betfair.com/sport/" className={styles.link}>
               Betfair Sportsbook
             </Link>
           </li>
           <li>
-            <Link href="https://www.betonline.ag/">BetOnline</Link>
+            <Link href="https://www.betonline.ag/" className={styles.link}>
+              BetOnline
+            </Link>
           </li>
           <li>
-            <Link href="https://www.888sport.de/">888Sport</Link>
+            <Link href="https://www.888sport.de/" className={styles.link}>
+              888Sport
+            </Link>
           </li>
           <li>
-            <Link href="https://www.mrgreen.com/at/">Mr. Green</Link>
+            <Link href="https://www.mrgreen.com/at/" className={styles.link}>
+              Mr. Green
+            </Link>
           </li>
           <li>
-            <Link href="https://de.unibet.com/betting/sports/home">Unibet</Link>
+            <Link
+              href="https://de.unibet.com/betting/sports/home"
+              className={styles.link}
+            >
+              Unibet
+            </Link>
           </li>
           <li>
-            <Link href="https://www.matchbook.com/">Matchbook</Link>
+            <Link href="https://www.matchbook.com/" className={styles.link}>
+              Matchbook
+            </Link>
           </li>
           <li>
-            <Link href="https://1xbet.com/de">1xBet</Link>
+            <Link href="https://1xbet.com/de" className={styles.link}>
+              1xBet
+            </Link>
           </li>
         </ul>
       </div>

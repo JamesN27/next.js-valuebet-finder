@@ -8,11 +8,12 @@
 
 .links {
   padding-top: 100px;
-  padding-right: 75px;
+  padding-right: 80px;
   line-height: 25px;
   float: right;
   z-index: 1;
   position: relative;
+  color: #85ec99;
 }
 
 .title {
@@ -24,4 +25,8 @@
   font-size: 48px;
   text-decoration: underline;
   color: #85ec99;
+}
+
+.link {
+  color: white;
 }

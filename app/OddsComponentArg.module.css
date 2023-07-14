@@ -46,7 +46,6 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
 .button:hover {
   background-color: #45a049;
 }
@@ -63,16 +62,18 @@
   position: absolute;
   display: flex;
   justify-content: center;
+  margin-top: 50px;
   right: 0;
   width: 100vw;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border-radius: 8px;
   padding: 20px;
   color: #333;
 }
 
 .outputList {
-  background-color: #e95c0b;
+  background-color: #6cd882;
+
   width: 60vw;
   border-radius: 10px;
   padding: 10px;
@@ -80,5 +81,11 @@
 }
 
 .outputSection li {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
+
+  color: #1f1e1e;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 100px;
 }

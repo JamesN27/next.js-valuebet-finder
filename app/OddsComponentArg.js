@@ -190,8 +190,9 @@ const OddsComponentArg = () => {
           <ul className={styles.outputList}>
             {odds.map((odd) => (
               <li key={odd.id}>
-                Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,
-                Bookmaker: {odd.bookmaker}, Outcome: {odd.outcome}, Price:{' '}
+                Event: {odd.event}, Commence Time: {odd.commenceTime} GMT+2,{' '}
+                <br />
+                Bookmaker:{odd.bookmaker},<br /> Outcome: {odd.outcome},Price:{' '}
                 {odd.price}, Pinnacle Price: {odd.pinnaclePrice}
               </li>
             ))}

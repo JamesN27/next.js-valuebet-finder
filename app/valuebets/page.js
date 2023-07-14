@@ -9,6 +9,10 @@ import styles from './page.module.css';
 export default function ValueBets() {
   return (
     <div>
+      <h1 className={styles.title}>
+        {' '}
+        Value Bet Filters for Tennis and Football
+      </h1>
       <div>
         <div className={styles.container}>
           <OddsComponentATP />

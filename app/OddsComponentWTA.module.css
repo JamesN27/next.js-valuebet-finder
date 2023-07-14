@@ -65,7 +65,7 @@
   justify-content: center;
   right: 0;
   width: 100vw;
-  margin-top: 780px;
+  margin-top: 850px;
   /* margin: 0 auto; */
   border-radius: 8px;
   padding: 20px;
@@ -73,7 +73,7 @@
 }
 
 .outputList {
-  background-color: #e95c0b;
+  background-color: #36ca3b;
   width: 60vw;
   border-radius: 10px;
   padding: 10px;

@@ -48,6 +48,7 @@ const Calculator = () => {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}> Value Calculator</h1>
       <div>
         <label className={styles.label} htmlFor="odds1">
           My Odds:

@@ -49,7 +49,7 @@ const OddsComponentArg = () => {
     try {
       // Make the API request to fetch the data
       const response = await axios.get(
-        'https://api.the-odds-api.com/v4/sports/soccer_argentina_primera_division/odds/',
+        'https://api.the-odds-api.com/v4/sports/baseball_mlb/odds/',
         {
           params: {
             apiKey: '2f42f78466de4f4fa0a9c6eff5ed85fa',
@@ -181,7 +181,7 @@ const OddsComponentArg = () => {
         </div>
 
         <button onClick={handleButtonClick} className={styles.button}>
-          Get Argentina Football Odds
+          Get MLB Baseball Odds
         </button>
       </div>
 

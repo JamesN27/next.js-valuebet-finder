@@ -37,7 +37,7 @@ export const deleteSessionByToken = cache(async (token: string) => {
      sessions.token = ${token}
     RETURNING
       id,
-      token,
+      token
 
   `;
 
